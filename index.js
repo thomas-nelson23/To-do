@@ -16,6 +16,7 @@ function loadEventListeners() {
   clearList.addEventListener("click", clear);
 }
 
+//clears entire list
 function clear(event) {
   itemsList.innerHTML = "";
   event.preventDefault();
@@ -23,26 +24,30 @@ function clear(event) {
 }
 
 function addItem(event) {
+  debugger;
   if (itemInput.value === "") {
     alert("Please type ino the text box!");
   }
 
   const itemLi = document.createElement("li");
-  const butt = document.createElement("button");
+  const removeButton = document.createElement("button");
 
-  butt.addEventListener("click", itemClear);
+  removeButton.addEventListener("click", () => {
+    itemsList.removeChild(itemLi);
+  });
 
-  butt.className = idCounter;
+  removeButton.className = idCounter;
 
   itemLi.className = idCounter;
   itemLi.innerText = itemInput.value;
 
-  buttonId = butt.className;
+  buttonId = removeButton.className;
+
 
   itemsList.appendChild(itemLi);
-  //   itemList.appendChild(button);
-  itemLi.appendChild(butt);
-  butt.innerText = "x";
+  itemLi.appendChild(removeButton);
+
+  removeButton.innerText = "x";
 
   itemInput.value = "";
 
@@ -51,11 +56,3 @@ function addItem(event) {
   idCounter++;
 }
 
-function itemClear() {
-  //console.log(li.className);
-  clearNumber = document.querySelector("li", clearNumber.className === 1);
-
-  //clearNumber = clearNumber.className;
-  console.log(clearNumber);
-}
-document.select;
